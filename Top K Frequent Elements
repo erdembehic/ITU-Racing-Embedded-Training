@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	
+	int i=0;
+	int  num[i];
+	int j,x,y;
+	int K[50];
+	int k;
+	
+	
+	cout << "Please enter how many numbers the array consists of: ";
+	cin >> i;
+	
+	cout << "Please enter the numbers of the array:  ";
+	
+	for (j=0; j<i; j++){
+		
+		cin >> num[j];		
+	}
+	
+	cout << "Enter the number of repeating numbers: ";
+	cin >> k;
+	
+    for (j=0; j<i; j++){
+		
+		cout << num[j] ;
+		cout<<" ";		
+	}
+	
+	cout<< "\n";
+	cout << "k = "<< k;
+	cout<< "\n";
+	
+	
+	for(j=0; j<i; j++){
+		
+		for(x=j+1 ; x<i ; x++){
+			
+			if(num[j] - 0 == num[x] &&  j != x ){
+				
+				cout << num[j];	
+				cout<<" ";	
+				
+			}
+			}
+					
+			} 
+			
+		
+	
+	return 0;
+}
