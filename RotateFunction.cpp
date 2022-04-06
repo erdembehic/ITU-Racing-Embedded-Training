@@ -1,3 +1,6 @@
+//Author Rana Tilki 
+//ITU Racing Embedded Team 2022
+
 #include <stdio.h> 
 int maxRotateFunction(int *nums, int numsSize){
     int buyukarr[numsSize],add=0,gecici,maxvalue;
