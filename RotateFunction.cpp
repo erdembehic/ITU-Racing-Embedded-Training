@@ -1,4 +1,4 @@
-//Author Rana Tilki 
+//Author 
 //ITU Racing Embedded Team 2022
 
 #include <stdio.h> 
