@@ -1,0 +1,60 @@
+//Anil.cpp : Defines the entry point for the console application.
+//Author: Anıl Karaca
+//ITU Racing Embedded Team 2022
+//Leetcode #134 C++ solution
+//Contact karacaa19@itu.edu.tr
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	int gas[3] = { 1, 5, 3 };
+	int cost[3] = { 2, 3, 4 }; // sample data
+	int p = 0;
+	int s;
+	int tank;
+	int a;
+	int i;
+	int length = sizeof(gas) / sizeof(gas[0]);
+	for (s = 0; s<length; s++)
+	{
+		tank = gas[s];
+		for (i = s + 1; i <= length; i++)
+		{
+			a = i - 1;
+			if (i == 0)
+				a = length - 1;
+			if (tank - cost[a] >= 0)
+			{
+				tank = tank + gas[i] - cost[a];
+				p++;
+				if (p == length)
+				{
+					
+					cout << s;
+					cout << " ";
+					break;
+				}
+
+			}
+			else
+			{
+				tank = 0;
+				cout << "-1";
+				cout << " ";
+				break;
+				p = 0;
+			}
+			if (i == length)
+				i = 0;
+		}
+	}
+	int l;
+	cin >> l;
+
+	return 0;
+}
