@@ -1,0 +1,78 @@
+// ConsoleApplication3.cpp : Defines the entry point for the console application.
+//Author: Anıl Karaca
+//ITU Racing Embedded Team 2022
+//Leetcode #134 C++ solution
+//Contact karacaa19@itu.edu.tr
+
+
+#include "stdafx.h"
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+
+
+int Med(int A[]){
+	int n = sizeof(A) / sizeof(int);
+	if (n % 2 == 0)
+		return (A[n / 2] - A[n / 2 - 1]) / 2;
+	else
+		return A[n / 2];
+}
+int Med2(int a, int b){
+	return (a + b) / 2;
+}
+int Med3(int a, int b, int c){
+	return  a + b + c - max(a, max(b, c)) - min(a, min(b, c));
+}
+int Med4(int a, int b, int c, int d){
+	return a + b + c + d - max(a, max(b, max(c, d))) - min(a, min(b, min(c, d)));
+}
+int Find(int A[], int NumA, int B[], int NumB){
+	if (NumA == 0)
+		return Med(B);
+	if (NumA == 1){
+		if (NumB == 1)
+			return Med2(A[0], B[0]);
+		if (NumB % 2 == 1)
+			return Med2(B[NumB / 2], Med3(A[0], B[NumB / 2 - 1], B[NumB / 2 + 1]));
+		if (NumB % 2 == 0)
+			return Med3(B[NumB / 2], B[NumB / 2 - 1], A[0]);
+	}
+	else if (NumA == 2){
+		if (NumB == 2)
+			return Med4(A[0], B[0],A[1],B[1]);
+		if (NumB % 2 == 1)
+			return Med3(B[NumB / 2],max(A[0],B[NumB/2-1]),min(A[1],B[NumB/2+1]));
+		if (NumB % 2 == 0)
+			return Med4(B[NumB / 2], B[NumB / 2 - 1],max( A[0],B[NumB/2-2]),min(A[1],B[NumB/2+1]));
+	}
+	int Ax = ((NumA - 1) / 2);
+	int Bx = ((NumB - 1) / 2);
+	if (A[Ax] <= B[Bx])
+		return Find(A + Ax, NumA / 2 + 1, B, NumB - Ax);
+	else
+		return Find(A, NumA / 2 + 1, B + Ax, NumB - Ax);
+}
+int all(int A[], int NumA, int B[], int NumB){
+	if (NumA > NumB)
+		return Find(B, NumB, A, NumA);
+	else
+		return Find(A, NumA, B, NumB);
+}
+int _tmain(int argc, _TCHAR* argv[]){
+	int num1[7] = { 1,5,8,11,24,30,40 };
+	int num2[2] = { 2,3 };
+	int NumA = sizeof(num1) / sizeof(int);
+	int NumB = sizeof(num2) / sizeof(int);
+	int Median = all(num1, NumA, num2, NumB);
+	cout << Median;
+
+}
+
+
+
+	
+
+
+
