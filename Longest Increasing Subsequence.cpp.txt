@@ -1,3 +1,7 @@
+//Author: <Kubra Tiryaki>
+//ITU Racing Embedded Team 2022
+//leetcode #300 C++ Solution
+//Contact <tiryaki21@itu.edu.tr>
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
